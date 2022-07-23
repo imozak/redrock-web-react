@@ -4,15 +4,14 @@ import { css, Global } from "@emotion/react";
 const GlobalStyle = () => (
   <Global
     styles={css`
-      @import url("https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap");
+      @import url("https://fonts.googleapis.com/css2?family=Urbanist:wght@100;200;300;400;500;600;700;800;900&display=swap");
 
       .root {
         --main-black-bg: #231f1e;
       }
 
       * {
-        font-family: "Edu VIC WA NT Beginner", cursive;
-        font-family: "Inter", sans-serif;
+        font-family: "Urbanist", sans-serif;
         box-sizing: border-box;
         text-decoration: none;
       }

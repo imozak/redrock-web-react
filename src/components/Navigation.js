@@ -2,15 +2,15 @@ import styled from "@emotion/styled";
 import React, { useState, forwardRef } from "react";
 import { Link } from "react-router-dom";
 
-const Navigation = () => {
+const Navigation = ({ screenWidth, screenHeight }) => {
   const a = 1;
   return (
     <>
-      <NavContainer>
-        <NavWrapper>
+      <NavContainer screenWidth={screenWidth} screenHeight={screenHeight}>
+        <NavWrapper screenWidth={screenWidth} screenHeight={screenHeight}>
           <img
             draggable="false"
-            style={{ width: "auto", height: "71%" }}
+            style={{ width: "auto", height: "65%" }}
             src="logos/Logo_RedRock_White.png"
             alt="로고"
           />
@@ -46,12 +46,12 @@ const Navigation = () => {
 };
 
 const NavContainer = styled.div`
-  position: absolute;
+  position: sticky;
   top: 0;
-  left: 0;
-  right: 0;
+  margin-top: ${(props) =>
+    props.screenWidth > props.screenHeight ? "2rem" : "0.2rem"};
   width: 100%;
-  height: 5rem;
+  height: 6rem;
   background-color: #231f1e;
 
   display: flex;
@@ -64,8 +64,8 @@ const NavContainer = styled.div`
 
 const NavWrapper = styled.div`
   position: relative;
-  width: 94%;
-  max-width: min(210vh, 3860px); // default ratio is 16:9
+  width: ${(props) => (props.screenWidth > props.screenHeight ? "90%" : "96%")};
+  //max-width: min(210vh, 3860px); // default ratio is 16:9
   height: 100%;
 
   display: flex;
@@ -117,19 +117,20 @@ const MenuTextContainer = styled.div`
   transition: all 0.2s ease-in-out;
   &:hover {
     background: #f5f5f50a;
+    & p {
+      color: #f5f5f5;
+    }
   }
 `;
 
 const MenuTextItem = styled.p`
   color: #cdcdcd;
+  font-size: 0.9rem;
   letter-spacing: 0.12rem;
 
   text-align: center;
 
   transition: color 0.2s ease-in-out;
-  &:hover {
-    color: #f5f5f5;
-  }
 `;
 
 export default Navigation;

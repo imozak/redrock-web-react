@@ -2,7 +2,7 @@ import styled from "@emotion/styled";
 import React, { useState, forwardRef } from "react";
 import { Link } from "react-router-dom";
 
-const PortfolioPage = () => {
+const PortfolioPage = ({ screenWidth, screenHeight }) => {
   const a = 1;
   return (
     <>

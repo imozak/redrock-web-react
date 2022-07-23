@@ -1,9 +1,7 @@
 import { Outlet, Link, BrowserRouter, Routes, Route } from "react-router-dom";
 import { Box, Divider, Typography } from "@mui/material";
+import React, { useState, forwardRef, useEffect } from "react";
 import styled from "@emotion/styled";
-import scrollbar from "smooth-scrollbar";
-import logo from "./logo.svg";
-import "./App.css";
 import GlobalStyle from "./globals/GlobalStyle";
 import Navigation from "./components/Navigation";
 import HomePage from "./components/HomePage";
@@ -12,19 +10,57 @@ import PortfolioPage from "./components/PortfolioPage";
 import TeamPage from "./components/TeamPage";
 
 const App = () => {
-  // smooth scroll 설정
-  scrollbar.init(document.querySelector("#smooth-scroll"));
+  const [screenWidth, setScreenWidth] = useState(0);
+  const [screenHeight, setScreenHeight] = useState(0);
+
+  useEffect(() => {
+    const handleClientSize = () => {
+      setScreenWidth(window.innerWidth);
+      setScreenHeight(window.innerHeight);
+    };
+    handleClientSize();
+    window.addEventListener("resize", handleClientSize);
+
+    return () => window.removeEventListener("resize", handleClientSize);
+  }, []);
 
   return (
-    <AppContainer id="smooth-scroll">
+    <AppContainer>
       <GlobalStyle />
-      <Navigation />
+      <Navigation screenWidth={screenWidth} screenHeight={screenHeight} />
       <ContentContainer>
         <Routes>
-          <Route path="/" exact element={<HomePage />} />
-          <Route path="/team" element={<TeamPage />} />
-          <Route path="/portfolio" element={<PortfolioPage />} />
-          <Route path="/contact" element={<ContactPage />} />
+          <Route
+            path="/"
+            exact
+            element={
+              <HomePage screenWidth={screenWidth} screenHeight={screenHeight} />
+            }
+          />
+          <Route
+            path="/team"
+            element={
+              <TeamPage screenWidth={screenWidth} screenHeight={screenHeight} />
+            }
+          />
+          <Route
+            path="/portfolio"
+            element={
+              <PortfolioPage
+                screenWidth={screenWidth}
+                screenHeight={screenHeight}
+              />
+            }
+          />
+          <Route
+            path="/contact"
+            element={
+              <ContactPage
+                screenWidth={screenWidth}
+                screenHeight={screenHeight}
+              />
+            }
+          />
         </Routes>
       </ContentContainer>
     </AppContainer>
@@ -32,11 +68,19 @@ const App = () => {
 };
 
 const AppContainer = styled.div`
-  position: fixed !important;
-  height: 100%;
+  position: relative;
+  width: 100vw;
+  height: 100vh;
   margin: 0;
   padding: 0;
-  overflow-x: hidden;
+  display: flex;
+  flex-direction: column;
+  background-color: #231f1e;
+
+  overflow-y: scroll;
+  &::-webkit-scrollbar {
+    display: none;
+  }
 `;
 
 const ContentContainer = styled.div`
