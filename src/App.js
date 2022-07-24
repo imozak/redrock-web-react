@@ -1,7 +1,15 @@
-import { Outlet, Link, BrowserRouter, Routes, Route } from "react-router-dom";
+import {
+  Outlet,
+  Link,
+  BrowserRouter,
+  Routes,
+  Route,
+  useLocation,
+} from "react-router-dom";
 import { Box, Divider, Typography, IconButton, Modal } from "@mui/material";
 import React, { useState, forwardRef, useEffect } from "react";
 import styled from "@emotion/styled";
+import { AnimatePresence } from "framer-motion";
 import GlobalStyle from "./globals/GlobalStyle";
 import Navigation from "./components/Navigation";
 import HomePage from "./components/HomePage";
@@ -13,16 +21,20 @@ import Footer from "./components/Footer";
 const App = () => {
   const [screenWidth, setScreenWidth] = useState(0);
   const [screenHeight, setScreenHeight] = useState(0);
+  const location = useLocation();
+
+  const handleClientSize = () => {
+    setScreenWidth(window.innerWidth);
+    setScreenHeight(window.innerHeight);
+  };
 
   useEffect(() => {
-    const handleClientSize = () => {
-      setScreenWidth(window.innerWidth);
-      setScreenHeight(window.innerHeight);
-    };
     handleClientSize();
     window.addEventListener("resize", handleClientSize);
 
-    return () => window.removeEventListener("resize", handleClientSize);
+    return () => {
+      window.removeEventListener("resize", handleClientSize);
+    };
   }, []);
 
   return (
@@ -30,39 +42,47 @@ const App = () => {
       <GlobalStyle />
       <Navigation screenWidth={screenWidth} screenHeight={screenHeight} />
       <ContentContainer>
-        <Routes>
-          <Route
-            path="/"
-            exact
-            element={
-              <HomePage screenWidth={screenWidth} screenHeight={screenHeight} />
-            }
-          />
-          <Route
-            path="/team"
-            element={
-              <TeamPage screenWidth={screenWidth} screenHeight={screenHeight} />
-            }
-          />
-          <Route
-            path="/portfolio"
-            element={
-              <PortfolioPage
-                screenWidth={screenWidth}
-                screenHeight={screenHeight}
-              />
-            }
-          />
-          <Route
-            path="/contact"
-            element={
-              <ContactPage
-                screenWidth={screenWidth}
-                screenHeight={screenHeight}
-              />
-            }
-          />
-        </Routes>
+        <AnimatePresence exitBeforeEnter>
+          <Routes key={location.pathname} location={location}>
+            <Route
+              path="/"
+              exact
+              element={
+                <HomePage
+                  screenWidth={screenWidth}
+                  screenHeight={screenHeight}
+                />
+              }
+            />
+            <Route
+              path="/team"
+              element={
+                <TeamPage
+                  screenWidth={screenWidth}
+                  screenHeight={screenHeight}
+                />
+              }
+            />
+            <Route
+              path="/portfolio"
+              element={
+                <PortfolioPage
+                  screenWidth={screenWidth}
+                  screenHeight={screenHeight}
+                />
+              }
+            />
+            <Route
+              path="/contact"
+              element={
+                <ContactPage
+                  screenWidth={screenWidth}
+                  screenHeight={screenHeight}
+                />
+              }
+            />
+          </Routes>
+        </AnimatePresence>
       </ContentContainer>
     </AppContainer>
   );

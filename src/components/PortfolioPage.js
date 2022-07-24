@@ -1,7 +1,14 @@
 import styled from "@emotion/styled";
 import React, { useState, forwardRef } from "react";
 import { Link } from "react-router-dom";
+import { motion } from "framer-motion";
 import Footer from "./Footer";
+
+const fadeInAnimation = {
+  initial: { opacity: 0 },
+  animate: { opacity: 1 },
+  exit: { opacity: 0 },
+};
 
 const PortfolioPage = ({ screenWidth, screenHeight }) => {
   const a = 1;

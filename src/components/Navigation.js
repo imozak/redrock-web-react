@@ -18,12 +18,14 @@ const Navigation = ({ screenWidth, screenHeight }) => {
     <>
       <NavContainer screenWidth={screenWidth} screenHeight={screenHeight}>
         <NavWrapper screenWidth={screenWidth} screenHeight={screenHeight}>
-          <img
-            draggable="false"
-            style={{ width: "auto", height: "65%" }}
-            src="logos/Logo_RedRock_White.png"
-            alt="로고"
-          />
+          <Link style={{ height: "100%" }} to="/">
+            <img
+              draggable="false"
+              style={{ width: "auto", height: "65%" }}
+              src="logos/Logo_RedRock_White.png"
+              alt="로고"
+            />
+          </Link>
           {screenWidth > screenHeight ? (
             <MenuContainer>
               <Link style={{ height: "100%" }} to="/">
