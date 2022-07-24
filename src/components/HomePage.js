@@ -25,7 +25,7 @@ const HomePage = ({ screenWidth, screenHeight }) => (
               color: "#E2E2E2",
             }}
           >
-            PROMOTIONAL TEXT
+            PROMOT123 TEXT
           </p>
           <p
             style={{
