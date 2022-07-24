@@ -42,14 +42,16 @@ const HomePage = ({ screenWidth, screenHeight }) => (
         </ContentWrapper>
       </ContentContainer>
 
-      <ContentContainer style={{ height: "100vmin" }}>
+      <ContentContainer
+        style={{ height: "80vmin", backgroundColor: "#F2F2F2" }}
+      >
         <ContentWrapper screenWidth={screenWidth} screenHeight={screenHeight}>
           <p
             style={{
               fontSize: "1.25rem",
               fontWeight: "600",
               letterSpacing: "0.2rem",
-              color: "#E2E2E2",
+              color: "#2F2F2F",
             }}
           >
             PORTFOLIOS

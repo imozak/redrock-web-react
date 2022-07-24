@@ -46,7 +46,7 @@ const Navigation = ({ screenWidth, screenHeight }) => {
 };
 
 const NavContainer = styled.div`
-  position: sticky;
+  position: relative;
   top: 0;
   margin-top: ${(props) =>
     props.screenWidth > props.screenHeight ? "2rem" : "0.2rem"};

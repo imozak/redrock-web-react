@@ -8,6 +8,7 @@ import HomePage from "./components/HomePage";
 import ContactPage from "./components/ContactPage";
 import PortfolioPage from "./components/PortfolioPage";
 import TeamPage from "./components/TeamPage";
+import Footer from "./components/Footer";
 
 const App = () => {
   const [screenWidth, setScreenWidth] = useState(0);
@@ -62,6 +63,7 @@ const App = () => {
             }
           />
         </Routes>
+        <Footer />
       </ContentContainer>
     </AppContainer>
   );
