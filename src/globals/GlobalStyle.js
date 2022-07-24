@@ -23,6 +23,7 @@ const GlobalStyle = () => (
         padding: 0px;
         overflow-x: hidden;
         overflow-y: hidden;
+        background-color: #231f1e;
       }
 
       p,

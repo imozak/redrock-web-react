@@ -1,9 +1,19 @@
 import styled from "@emotion/styled";
 import React, { useState, forwardRef } from "react";
 import { Link } from "react-router-dom";
+import { IconButton, Modal } from "@mui/material";
+import SegmentIcon from "@mui/icons-material/Segment";
 
 const Navigation = ({ screenWidth, screenHeight }) => {
-  const a = 1;
+  const [mobileMenuModalFlag, setMobileMenuModalFlag] = useState(false);
+
+  const openMobileMenu = () => {
+    setMobileMenuModalFlag(true);
+  };
+  const closeMobileMenu = () => {
+    setMobileMenuModalFlag(false);
+  };
+
   return (
     <>
       <NavContainer screenWidth={screenWidth} screenHeight={screenHeight}>
@@ -14,45 +24,113 @@ const Navigation = ({ screenWidth, screenHeight }) => {
             src="logos/Logo_RedRock_White.png"
             alt="로고"
           />
-          <MenuContainer>
-            <Link style={{ height: "100%" }} to="/">
-              <MenuTextContainer>
-                <MenuTextItem>HOME</MenuTextItem>
-              </MenuTextContainer>
-            </Link>
+          {screenWidth > screenHeight ? (
+            <MenuContainer>
+              <Link style={{ height: "100%" }} to="/">
+                <MenuTextContainer>
+                  <MenuTextItem>HOME</MenuTextItem>
+                </MenuTextContainer>
+              </Link>
 
-            <Link style={{ height: "100%" }} to="/team">
-              <MenuTextContainer>
-                <MenuTextItem>TEAM</MenuTextItem>
-              </MenuTextContainer>
-            </Link>
+              <Link style={{ height: "100%" }} to="/team">
+                <MenuTextContainer>
+                  <MenuTextItem>TEAM</MenuTextItem>
+                </MenuTextContainer>
+              </Link>
 
-            <Link style={{ height: "100%" }} to="/portfolio">
-              <MenuTextContainer>
-                <MenuTextItem>PORTFOLIO</MenuTextItem>
-              </MenuTextContainer>
-            </Link>
+              <Link style={{ height: "100%" }} to="/portfolio">
+                <MenuTextContainer>
+                  <MenuTextItem>PORTFOLIO</MenuTextItem>
+                </MenuTextContainer>
+              </Link>
 
-            <Link style={{ height: "100%" }} to="/contact">
-              <MenuTextContainer>
-                <MenuTextItem>CONTACT</MenuTextItem>
-              </MenuTextContainer>
-            </Link>
-          </MenuContainer>
+              <Link style={{ height: "100%" }} to="/contact">
+                <MenuTextContainer>
+                  <MenuTextItem>CONTACT</MenuTextItem>
+                </MenuTextContainer>
+              </Link>
+            </MenuContainer>
+          ) : (
+            <MenuContainer>
+              <IconButton
+                disableRipple
+                onClick={openMobileMenu}
+                sx={{
+                  marginRight: "0.4rem",
+                }}
+              >
+                <SegmentIcon
+                  fontSize="large"
+                  sx={{
+                    color: "#cdcdcd",
+                  }}
+                />
+              </IconButton>
+            </MenuContainer>
+          )}
         </NavWrapper>
       </NavContainer>
+
+      <Modal
+        open={mobileMenuModalFlag}
+        onClose={closeMobileMenu}
+        sx={{
+          backdropFilter: "blur(17px)",
+        }}
+      >
+        <ModalMenuContainer>
+          <Link
+            style={{ width: "100%", height: "7rem" }}
+            to="/"
+            onClick={closeMobileMenu}
+          >
+            <MenuTextContainer>
+              <MenuTextItem>HOME</MenuTextItem>
+            </MenuTextContainer>
+          </Link>
+
+          <Link
+            style={{ width: "100%", height: "7rem" }}
+            to="/team"
+            onClick={closeMobileMenu}
+          >
+            <MenuTextContainer>
+              <MenuTextItem>TEAM</MenuTextItem>
+            </MenuTextContainer>
+          </Link>
+
+          <Link
+            style={{ width: "100%", height: "7rem" }}
+            to="/portfolio"
+            onClick={closeMobileMenu}
+          >
+            <MenuTextContainer>
+              <MenuTextItem>PORTFOLIO</MenuTextItem>
+            </MenuTextContainer>
+          </Link>
+
+          <Link
+            style={{ width: "100%", height: "7rem" }}
+            to="/contact"
+            onClick={closeMobileMenu}
+          >
+            <MenuTextContainer>
+              <MenuTextItem>CONTACT</MenuTextItem>
+            </MenuTextContainer>
+          </Link>
+        </ModalMenuContainer>
+      </Modal>
     </>
   );
 };
 
 const NavContainer = styled.div`
-  position: relative;
+  position: absolute;
   top: 0;
   margin-top: ${(props) =>
     props.screenWidth > props.screenHeight ? "2rem" : "0.2rem"};
   width: 100%;
   height: 6rem;
-  background-color: #231f1e;
 
   display: flex;
   flex-direction: row;
@@ -103,6 +181,31 @@ const MenuContainer = styled.div`
   }
 `;
 
+const ModalMenuContainer = styled.div`
+  position: absolute;
+  top: 7rem;
+  width: 100%;
+  height: auto;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  & * {
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -o-user-select: none;
+    user-select: none;
+    -webkit-user-drag: none;
+  }
+
+  & p {
+    font-size: 1.2rem !important;
+    font-weight: 600 !important;
+  }
+`;
+
 const MenuTextContainer = styled.div`
   position: relative;
   height: 100%;
@@ -115,6 +218,7 @@ const MenuTextContainer = styled.div`
   padding: 0 3vmin;
 
   transition: all 0.2s ease-in-out;
+
   &:hover {
     background: #f5f5f50a;
     & p {
@@ -124,7 +228,7 @@ const MenuTextContainer = styled.div`
 `;
 
 const MenuTextItem = styled.p`
-  color: #cdcdcd;
+  color: #dedede;
   font-size: 0.9rem;
   letter-spacing: 0.12rem;
 

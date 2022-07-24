@@ -1,5 +1,5 @@
 import { Outlet, Link, BrowserRouter, Routes, Route } from "react-router-dom";
-import { Box, Divider, Typography } from "@mui/material";
+import { Box, Divider, Typography, IconButton, Modal } from "@mui/material";
 import React, { useState, forwardRef, useEffect } from "react";
 import styled from "@emotion/styled";
 import GlobalStyle from "./globals/GlobalStyle";
@@ -63,7 +63,6 @@ const App = () => {
             }
           />
         </Routes>
-        <Footer />
       </ContentContainer>
     </AppContainer>
   );
@@ -71,7 +70,7 @@ const App = () => {
 
 const AppContainer = styled.div`
   position: relative;
-  width: 100vw;
+  width: min(100vw, 3680px);
   height: 100vh;
   margin: 0;
   padding: 0;

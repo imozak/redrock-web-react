@@ -1,20 +1,23 @@
 import styled from "@emotion/styled";
 import React, { useState, forwardRef } from "react";
 import { Link } from "react-router-dom";
+import Footer from "./Footer";
 
 const PortfolioPage = ({ screenWidth, screenHeight }) => {
   const a = 1;
   return (
     <>
-      <HomeContainer />
+      <PageContainer />
+
+      <Footer screenWidth={screenWidth} screenHeight={screenHeight} />
     </>
   );
 };
 
-const HomeContainer = styled.div`
+const PageContainer = styled.div`
   position: relative;
   width: 100vw;
-  height: 200vh;
+  height: 100vh;
   background-color: #231f1e;
 
   display: flex;

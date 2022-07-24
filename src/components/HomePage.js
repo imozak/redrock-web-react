@@ -1,11 +1,12 @@
 import styled from "@emotion/styled";
 import React, { useState, forwardRef, useEffect } from "react";
 import { Link } from "react-router-dom";
+import Footer from "./Footer";
 
 const HomePage = ({ screenWidth, screenHeight }) => (
   <>
-    <HomeContainer>
-      <ContentContainer style={{ height: "95vmin" }}>
+    <PageContainer>
+      <ContentContainer style={{ height: "95vh" }}>
         <ImageComponent
           src="imgs/RedRockImg01.jpg"
           alt="main page img"
@@ -15,7 +16,7 @@ const HomePage = ({ screenWidth, screenHeight }) => (
         <ContentWrapper
           screenWidth={screenWidth}
           screenHeight={screenHeight}
-          style={{ marginTop: "-24vmin" }}
+          style={{ marginTop: "-20vmin" }}
         >
           <p
             style={{
@@ -43,7 +44,11 @@ const HomePage = ({ screenWidth, screenHeight }) => (
       </ContentContainer>
 
       <ContentContainer
-        style={{ height: "80vmin", backgroundColor: "#F2F2F2" }}
+        style={{
+          height: "auto",
+          padding: " 6rem 0rem",
+          // backgroundColor: "#F2F2F2",
+        }}
       >
         <ContentWrapper screenWidth={screenWidth} screenHeight={screenHeight}>
           <p
@@ -51,7 +56,8 @@ const HomePage = ({ screenWidth, screenHeight }) => (
               fontSize: "1.25rem",
               fontWeight: "600",
               letterSpacing: "0.2rem",
-              color: "#2F2F2F",
+              color: "#E2E2E2",
+              // color: "#2F2F2F",
             }}
           >
             PORTFOLIOS
@@ -63,25 +69,19 @@ const HomePage = ({ screenWidth, screenHeight }) => (
             <PortfolioLogoBox />
             <PortfolioLogoBox />
             <PortfolioLogoBox />
-            <PortfolioLogoBox />
-            <PortfolioLogoBox />
-            <PortfolioLogoBox />
-            <PortfolioLogoBox />
-            <PortfolioLogoBox />
-            <PortfolioLogoBox />
-            <PortfolioLogoBox />
-            <PortfolioLogoBox />
-            <PortfolioLogoBox />
           </PortfolioContainer>
         </ContentWrapper>
       </ContentContainer>
-    </HomeContainer>
+
+      <Footer screenWidth={screenWidth} screenHeight={screenHeight} />
+    </PageContainer>
   </>
 );
 
-const HomeContainer = styled.div`
+const PageContainer = styled.div`
   position: relative;
   width: 100%;
+  margin-top: 5vh;
   background-color: #231f1e;
 
   display: flex;
@@ -125,6 +125,7 @@ const ImageComponent = styled.img`
     props.screenWidth > props.screenHeight ? "100%" : "auto"};
   height: ${(props) =>
     props.screenWidth > props.screenHeight ? "auto" : "100%"};
+
   mix-blend-mode: lighten;
   opacity: 0.55;
 `;
@@ -136,9 +137,8 @@ const PortfolioContainer = styled.div`
 `;
 
 const PortfolioLogoBox = styled.div`
-  width: 15rem;
-  height: 9rem;
-  background-color: white;
+  width: 10rem;
+  height: 6rem;
 `;
 
 export default HomePage;
