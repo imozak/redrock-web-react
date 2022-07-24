@@ -1,7 +1,7 @@
 import styled from "@emotion/styled";
 import React, { useState, forwardRef } from "react";
 import { Link } from "react-router-dom";
-import { IconButton, Modal } from "@mui/material";
+import { IconButton, Modal, Fade } from "@mui/material";
 import SegmentIcon from "@mui/icons-material/Segment";
 
 const Navigation = ({ screenWidth, screenHeight }) => {
@@ -79,48 +79,51 @@ const Navigation = ({ screenWidth, screenHeight }) => {
         sx={{
           backdropFilter: "blur(17px)",
         }}
+        closeAfterTransition
       >
-        <ModalMenuContainer>
-          <Link
-            style={{ width: "100%", height: "7rem" }}
-            to="/"
-            onClick={closeMobileMenu}
-          >
-            <MenuTextContainer>
-              <MenuTextItem>HOME</MenuTextItem>
-            </MenuTextContainer>
-          </Link>
+        <Fade in={mobileMenuModalFlag}>
+          <ModalMenuContainer>
+            <Link
+              style={{ width: "100%", height: "7rem" }}
+              to="/"
+              onClick={closeMobileMenu}
+            >
+              <MenuTextContainer>
+                <MenuTextItem>HOME</MenuTextItem>
+              </MenuTextContainer>
+            </Link>
 
-          <Link
-            style={{ width: "100%", height: "7rem" }}
-            to="/team"
-            onClick={closeMobileMenu}
-          >
-            <MenuTextContainer>
-              <MenuTextItem>TEAM</MenuTextItem>
-            </MenuTextContainer>
-          </Link>
+            <Link
+              style={{ width: "100%", height: "7rem" }}
+              to="/team"
+              onClick={closeMobileMenu}
+            >
+              <MenuTextContainer>
+                <MenuTextItem>TEAM</MenuTextItem>
+              </MenuTextContainer>
+            </Link>
 
-          <Link
-            style={{ width: "100%", height: "7rem" }}
-            to="/portfolio"
-            onClick={closeMobileMenu}
-          >
-            <MenuTextContainer>
-              <MenuTextItem>PORTFOLIO</MenuTextItem>
-            </MenuTextContainer>
-          </Link>
+            <Link
+              style={{ width: "100%", height: "7rem" }}
+              to="/portfolio"
+              onClick={closeMobileMenu}
+            >
+              <MenuTextContainer>
+                <MenuTextItem>PORTFOLIO</MenuTextItem>
+              </MenuTextContainer>
+            </Link>
 
-          <Link
-            style={{ width: "100%", height: "7rem" }}
-            to="/contact"
-            onClick={closeMobileMenu}
-          >
-            <MenuTextContainer>
-              <MenuTextItem>CONTACT</MenuTextItem>
-            </MenuTextContainer>
-          </Link>
-        </ModalMenuContainer>
+            <Link
+              style={{ width: "100%", height: "7rem" }}
+              to="/contact"
+              onClick={closeMobileMenu}
+            >
+              <MenuTextContainer>
+                <MenuTextItem>CONTACT</MenuTextItem>
+              </MenuTextContainer>
+            </Link>
+          </ModalMenuContainer>
+        </Fade>
       </Modal>
     </>
   );
