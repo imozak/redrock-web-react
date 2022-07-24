@@ -18,10 +18,10 @@ const Navigation = ({ screenWidth, screenHeight }) => {
     <>
       <NavContainer screenWidth={screenWidth} screenHeight={screenHeight}>
         <NavWrapper screenWidth={screenWidth} screenHeight={screenHeight}>
-          <Link style={{ height: "100%" }} to="/">
+          <Link style={{ height: "65%" }} to="/">
             <img
               draggable="false"
-              style={{ width: "auto", height: "65%" }}
+              style={{ width: "auto", height: "100%" }}
               src="logos/Logo_RedRock_White.png"
               alt="로고"
             />

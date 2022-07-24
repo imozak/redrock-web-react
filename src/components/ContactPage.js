@@ -24,7 +24,7 @@ const textFromBottomAnimation = {
 
 const ContactPage = ({ screenWidth, screenHeight }) => {
   const elementRef = useRef(null);
-  const [textWidth, setTextWidth] = useState(0);
+  const [textWidth, setTextWidth] = useState(200);
 
   const handleTextWidth = () => {
     let value = 0;
@@ -38,13 +38,13 @@ const ContactPage = ({ screenWidth, screenHeight }) => {
   useEffect(() => {
     handleTextWidth();
     window.addEventListener("resize", handleTextWidth);
-    window.addEventListener("load", handleTextWidth);
+    window.addEventListener("DOMContentLoaded", handleTextWidth);
 
     return () => {
       window.removeEventListener("resize", handleTextWidth);
-      window.removeEventListener("load", handleTextWidth);
+      window.removeEventListener("DOMContentLoaded", handleTextWidth);
     };
-  }, [screenWidth]);
+  }, []);
 
   return (
     <>
@@ -129,6 +129,7 @@ const ContactPage = ({ screenWidth, screenHeight }) => {
               </motion.div>
             ) : (
               <div
+                ref={elementRef}
                 style={{
                   display: "flex",
                   flexDirection: "column",
