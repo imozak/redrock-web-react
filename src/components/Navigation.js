@@ -3,15 +3,16 @@ import React, { useState, forwardRef } from "react";
 import { Link } from "react-router-dom";
 import { IconButton, Modal, Fade } from "@mui/material";
 import SegmentIcon from "@mui/icons-material/Segment";
+import ContactComponent from "./ContactComponent";
 
 const Navigation = ({ screenWidth, screenHeight }) => {
-  const [mobileMenuModalFlag, setMobileMenuModalFlag] = useState(false);
+  const [expandableMenuModalFlag, setExpandableMenuModalFlag] = useState(false);
 
-  const openMobileMenu = () => {
-    setMobileMenuModalFlag(true);
+  const openExpandableMenu = () => {
+    setExpandableMenuModalFlag(true);
   };
-  const closeMobileMenu = () => {
-    setMobileMenuModalFlag(false);
+  const closeExpandableMenu = () => {
+    setExpandableMenuModalFlag(false);
   };
 
   return (
@@ -26,67 +27,45 @@ const Navigation = ({ screenWidth, screenHeight }) => {
               alt="로고"
             />
           </Link>
-          {screenWidth > screenHeight ? (
-            <MenuContainer>
-              <Link style={{ height: "100%" }} to="/">
-                <MenuTextContainer>
-                  <MenuTextItem>HOME</MenuTextItem>
-                </MenuTextContainer>
-              </Link>
 
-              <Link style={{ height: "100%" }} to="/team">
-                <MenuTextContainer>
-                  <MenuTextItem>TEAM</MenuTextItem>
-                </MenuTextContainer>
-              </Link>
-
-              <Link style={{ height: "100%" }} to="/portfolio">
-                <MenuTextContainer>
-                  <MenuTextItem>PORTFOLIO</MenuTextItem>
-                </MenuTextContainer>
-              </Link>
-
-              <Link style={{ height: "100%" }} to="/contact">
-                <MenuTextContainer>
-                  <MenuTextItem>CONTACT</MenuTextItem>
-                </MenuTextContainer>
-              </Link>
-            </MenuContainer>
-          ) : (
-            <MenuContainer>
-              <IconButton
-                disableRipple
-                onClick={openMobileMenu}
+          <MenuContainer>
+            <IconButton
+              disableRipple
+              onClick={openExpandableMenu}
+              sx={{
+                marginRight: "0.4rem",
+              }}
+            >
+              <SegmentIcon
+                fontSize="large"
                 sx={{
-                  marginRight: "0.4rem",
+                  color: "#cdcdcd",
                 }}
-              >
-                <SegmentIcon
-                  fontSize="large"
-                  sx={{
-                    color: "#cdcdcd",
-                  }}
-                />
-              </IconButton>
-            </MenuContainer>
-          )}
+              />
+            </IconButton>
+          </MenuContainer>
         </NavWrapper>
       </NavContainer>
 
       <Modal
-        open={mobileMenuModalFlag}
-        onClose={closeMobileMenu}
+        open={expandableMenuModalFlag}
+        onClose={closeExpandableMenu}
         sx={{
           backdropFilter: "blur(17px)",
+          display: "flex",
+          justifyContent: "center",
         }}
         closeAfterTransition
       >
-        <Fade in={mobileMenuModalFlag}>
-          <ModalMenuContainer>
+        <Fade in={expandableMenuModalFlag}>
+          <ModalMenuContainer
+            screenWidth={screenWidth}
+            screenHeight={screenHeight}
+          >
             <Link
               style={{ width: "100%", height: "7rem" }}
               to="/"
-              onClick={closeMobileMenu}
+              onClick={closeExpandableMenu}
             >
               <MenuTextContainer>
                 <MenuTextItem>HOME</MenuTextItem>
@@ -96,7 +75,7 @@ const Navigation = ({ screenWidth, screenHeight }) => {
             <Link
               style={{ width: "100%", height: "7rem" }}
               to="/team"
-              onClick={closeMobileMenu}
+              onClick={closeExpandableMenu}
             >
               <MenuTextContainer>
                 <MenuTextItem>TEAM</MenuTextItem>
@@ -105,23 +84,25 @@ const Navigation = ({ screenWidth, screenHeight }) => {
 
             <Link
               style={{ width: "100%", height: "7rem" }}
-              to="/portfolio"
-              onClick={closeMobileMenu}
+              to="/partners"
+              onClick={closeExpandableMenu}
             >
               <MenuTextContainer>
-                <MenuTextItem>PORTFOLIO</MenuTextItem>
+                <MenuTextItem>PARTNERS</MenuTextItem>
               </MenuTextContainer>
             </Link>
 
             <Link
               style={{ width: "100%", height: "7rem" }}
-              to="/contact"
-              onClick={closeMobileMenu}
+              to="/portfolios"
+              onClick={closeExpandableMenu}
             >
               <MenuTextContainer>
-                <MenuTextItem>CONTACT</MenuTextItem>
+                <MenuTextItem>PORTFOLIOS</MenuTextItem>
               </MenuTextContainer>
             </Link>
+
+            <ContactComponent />
           </ModalMenuContainer>
         </Fade>
       </Modal>
@@ -188,13 +169,15 @@ const MenuContainer = styled.div`
 
 const ModalMenuContainer = styled.div`
   position: absolute;
-  top: 7rem;
-  width: 100%;
-  height: auto;
+  top: 0;
+  width: ${(props) =>
+    props.screenWidth > props.screenHeight ? "20rem" : "100%"};
+  height: 100%;
 
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: center;
 
   & * {
     -webkit-user-select: none;
@@ -206,8 +189,9 @@ const ModalMenuContainer = styled.div`
   }
 
   & p {
-    font-size: 1.2rem !important;
-    font-weight: 600 !important;
+    font-size: 1.3rem;
+    font-weight: 600;
+    letter-spacing: 0.5rem;
   }
 `;
 
@@ -234,7 +218,7 @@ const MenuTextContainer = styled.div`
 
 const MenuTextItem = styled.p`
   color: #dedede;
-  font-size: 0.9rem;
+  font-size: 1rem;
   letter-spacing: 0.12rem;
 
   text-align: center;

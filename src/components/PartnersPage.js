@@ -10,7 +10,7 @@ const fadeInAnimation = {
   exit: { opacity: 0 },
 };
 
-const PortfolioPage = ({ screenWidth, screenHeight }) => {
+const PartnersPage = ({ screenWidth, screenHeight }) => {
   const a = 1;
   return (
     <>
@@ -53,4 +53,4 @@ const NavWrapper = styled.div`
     -webkit-user-drag: none;
   }
 `;
-export default PortfolioPage;
+export default PartnersPage;
