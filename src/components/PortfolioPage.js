@@ -196,7 +196,7 @@ const PortfolioPage = ({ screenWidth, screenHeight }) => {
                 transition={{ ...springTrainsition, delay: "0.5" }}
               >
                 <LogoComponent
-                  src="logos/Logo_cardio.png"
+                  src="logos/Logo_cardiohealth.png"
                   alt="logo image"
                   screenWidth={screenWidth}
                   screenHeight={screenHeight}
