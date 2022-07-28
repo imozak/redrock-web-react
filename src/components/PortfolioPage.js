@@ -106,7 +106,7 @@ const PortfolioPage = ({ screenWidth, screenHeight }) => {
               </motion.div>
             </motion.div>
             <LogoContainer>
-              <motion.div
+              <LogoMotionDiv
                 variants={fromDownAnimation}
                 initial="initial"
                 animate="animate"
@@ -119,8 +119,9 @@ const PortfolioPage = ({ screenWidth, screenHeight }) => {
                   screenWidth={screenWidth}
                   screenHeight={screenHeight}
                 />
-              </motion.div>
-              <motion.div
+                <LogoText>CODEDAO</LogoText>
+              </LogoMotionDiv>
+              <LogoMotionDiv
                 variants={fromDownAnimation}
                 initial="initial"
                 animate="animate"
@@ -133,9 +134,10 @@ const PortfolioPage = ({ screenWidth, screenHeight }) => {
                   screenWidth={screenWidth}
                   screenHeight={screenHeight}
                 />
-              </motion.div>
+                <LogoText>FALCONX (EXITED)</LogoText>
+              </LogoMotionDiv>
 
-              <motion.div
+              <LogoMotionDiv
                 variants={fromDownAnimation}
                 initial="initial"
                 animate="animate"
@@ -148,9 +150,10 @@ const PortfolioPage = ({ screenWidth, screenHeight }) => {
                   screenWidth={screenWidth}
                   screenHeight={screenHeight}
                 />
-              </motion.div>
+                <LogoText>COINDCX</LogoText>
+              </LogoMotionDiv>
 
-              <motion.div
+              <LogoMotionDiv
                 variants={fromDownAnimation}
                 initial="initial"
                 animate="animate"
@@ -163,9 +166,10 @@ const PortfolioPage = ({ screenWidth, screenHeight }) => {
                   screenWidth={screenWidth}
                   screenHeight={screenHeight}
                 />
-              </motion.div>
+                <LogoText>FTX</LogoText>
+              </LogoMotionDiv>
 
-              <motion.div
+              <LogoMotionDiv
                 variants={fromDownAnimation}
                 initial="initial"
                 animate="animate"
@@ -178,7 +182,8 @@ const PortfolioPage = ({ screenWidth, screenHeight }) => {
                   screenWidth={screenWidth}
                   screenHeight={screenHeight}
                 />
-              </motion.div>
+                <LogoText>CARDIO HEALTH</LogoText>
+              </LogoMotionDiv>
             </LogoContainer>
           </ContentWrapper>
         </ContentContainer>
@@ -264,10 +269,26 @@ const LogoContainer = styled.div`
   row-gap: 2rem;
 `;
 
+const LogoMotionDiv = styled(motion.div)`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+`;
+
 const LogoComponent = styled.img`
   height: ${(props) =>
     props.screenWidth > props.screenHeight ? "3vmax" : "9vmin"};
   opacity: 0.9;
+`;
+
+const LogoText = styled.p`
+  width: 100%;
+  font-size: 1rem;
+  font-weight: 600;
+  letter-spacing: 0.1rem;
+  color: #bfbfbf;
+  text-align: center;
+  line-height: 0;
 `;
 
 export default PortfolioPage;
