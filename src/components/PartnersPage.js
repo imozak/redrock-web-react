@@ -1,5 +1,5 @@
 import styled from "@emotion/styled";
-import React, { useState, forwardRef } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { motion } from "framer-motion";
 import { Divider } from "@mui/material";
 import Footer from "./Footer";
@@ -41,26 +41,47 @@ const springTrainsition = {
 };
 
 const PartnersPage = ({ screenWidth, screenHeight }) => {
-  const a = 1;
+  const imageElementRef = useRef(null);
+  const [imageLoaded, setImageLoaded] = useState(false);
+
+  const onImageLoaded = () => setImageLoaded(true);
+
+  useEffect(() => {
+    if (imageElementRef.current !== null && imageElementRef !== undefined) {
+      imageElementRef.current.addEventListener("load", onImageLoaded);
+    }
+    return () => {
+      if (imageElementRef.current !== null && imageElementRef !== undefined)
+        imageElementRef.current.removeEventListener("load", onImageLoaded);
+    };
+  }, [imageElementRef]);
+
   return (
     <>
       <PageContainer>
         <ContentContainer style={{ height: "100vh" }}>
           <ImageComponent
+            onLoad={onImageLoaded}
+            ref={imageElementRef}
             src="imgs/bg02.jpg"
             alt="partners page img"
             screenWidth={screenWidth}
             screenHeight={screenHeight}
           />
-          <motion.div
-            variants={bgAnimation}
-            initial="initial"
-            animate="animate"
-            exit="exit"
-            transition={{ duration: "0.32", delay: "0" }}
-          >
+
+          {imageLoaded ? (
+            <motion.div
+              variants={bgAnimation}
+              initial="initial"
+              animate="animate"
+              exit="exit"
+              transition={{ duration: "0.25", delay: "0" }}
+            >
+              <ImageCover />
+            </motion.div>
+          ) : (
             <ImageCover />
-          </motion.div>
+          )}
 
           <ContentWrapper
             screenWidth={screenWidth}

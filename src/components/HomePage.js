@@ -1,5 +1,5 @@
 import styled from "@emotion/styled";
-import React, { useState, forwardRef, useEffect } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import { motion } from "framer-motion";
 import Footer from "./Footer";
 
@@ -27,75 +27,100 @@ const springTrainsition = {
   damping: 15,
 };
 
-const HomePage = ({ screenWidth, screenHeight }) => (
-  <>
-    <PageContainer>
-      <ContentContainer style={{ height: "95vh" }}>
-        <ImageComponent
-          src="imgs/bg01.jpg"
-          alt="main page img"
-          screenWidth={screenWidth}
-          screenHeight={screenHeight}
-        />
-        <motion.div
-          variants={bgAnimation}
-          initial="initial"
-          animate="animate"
-          exit="exit"
-          transition={{ duration: "0.32", delay: "0" }}
-        >
-          <ImageCover />
-        </motion.div>
-        <ContentWrapper
-          screenWidth={screenWidth}
-          screenHeight={screenHeight}
-          style={{ marginTop: "-10vh", zIndex: "3" }}
-        >
-          <motion.div
-            variants={textFromRightAnimation}
-            initial="initial"
-            animate="animate"
-            exit="exit"
-            transition={{ ...springTrainsition, delay: "0.1" }}
-          >
-            <p
-              style={{
-                fontSize: "3rem",
-                fontWeight: "700",
-                letterSpacing: "0.2rem",
-                color: "#E2E2E2",
-              }}
-            >
-              PROMOT123 TEXT
-            </p>
-          </motion.div>
-          <motion.div
-            variants={textFromLeftAnimation}
-            initial="initial"
-            animate="animate"
-            exit="exit"
-            transition={{ ...springTrainsition, delay: "0.2" }}
-          >
-            <p
-              style={{
-                fontSize: "1.1rem",
-                fontWeight: "300",
-                color: "#F0F0F0",
-                lineHeight: "2rem",
-                letterSpacing: "0.05rem",
-              }}
-            >
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-              eiusmod tempor incididunt
-            </p>
-          </motion.div>
-        </ContentWrapper>
-      </ContentContainer>
+const HomePage = ({ screenWidth, screenHeight }) => {
+  const imageElementRef = useRef(null);
+  const [imageLoaded, setImageLoaded] = useState(false);
 
-      <Footer screenWidth={screenWidth} screenHeight={screenHeight} />
-    </PageContainer>
-  </>
-);
+  const onImageLoaded = () => setImageLoaded(true);
+
+  useEffect(() => {
+    if (imageElementRef.current !== null && imageElementRef !== undefined) {
+      imageElementRef.current.addEventListener("load", onImageLoaded);
+    }
+    return () => {
+      if (imageElementRef.current !== null && imageElementRef !== undefined)
+        imageElementRef.current.removeEventListener("load", onImageLoaded);
+    };
+  }, [imageElementRef]);
+
+  return (
+    <>
+      <PageContainer>
+        <ContentContainer style={{ height: "95vh" }}>
+          <ImageComponent
+            onLoad={onImageLoaded}
+            ref={imageElementRef}
+            src="imgs/bg01.jpg"
+            alt="main page img"
+            screenWidth={screenWidth}
+            screenHeight={screenHeight}
+          />
+
+          {imageLoaded ? (
+            <motion.div
+              variants={bgAnimation}
+              initial="initial"
+              animate="animate"
+              exit="exit"
+              transition={{ duration: "0.25", delay: "0" }}
+            >
+              <ImageCover />
+            </motion.div>
+          ) : (
+            <ImageCover />
+          )}
+
+          <ContentWrapper
+            screenWidth={screenWidth}
+            screenHeight={screenHeight}
+            style={{ marginTop: "-10vh", zIndex: "3" }}
+          >
+            <motion.div
+              variants={textFromRightAnimation}
+              initial="initial"
+              animate="animate"
+              exit="exit"
+              transition={{ ...springTrainsition, delay: "0.1" }}
+            >
+              <p
+                style={{
+                  fontSize: "3rem",
+                  fontWeight: "700",
+                  letterSpacing: "0.2rem",
+                  color: "#E2E2E2",
+                }}
+              >
+                PROMOT123 TEXT
+              </p>
+            </motion.div>
+            <motion.div
+              variants={textFromLeftAnimation}
+              initial="initial"
+              animate="animate"
+              exit="exit"
+              transition={{ ...springTrainsition, delay: "0.2" }}
+            >
+              <p
+                style={{
+                  fontSize: "1.1rem",
+                  fontWeight: "300",
+                  color: "#F0F0F0",
+                  lineHeight: "2rem",
+                  letterSpacing: "0.05rem",
+                }}
+              >
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+                eiusmod tempor incididunt
+              </p>
+            </motion.div>
+          </ContentWrapper>
+        </ContentContainer>
+
+        <Footer screenWidth={screenWidth} screenHeight={screenHeight} />
+      </PageContainer>
+    </>
+  );
+};
 
 const PageContainer = styled.div`
   position: relative;

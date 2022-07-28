@@ -1,6 +1,6 @@
 import styled from "@emotion/styled";
-import React, { useState, useRef } from "react";
-import { motion } from "framer-motion";
+import React, { useState, useRef, useEffect } from "react";
+import { motion, useAnimation } from "framer-motion";
 import { Divider } from "@mui/material";
 import Footer from "./Footer";
 
@@ -41,28 +41,47 @@ const springTrainsition = {
 };
 
 const PortfolioPage = ({ screenWidth, screenHeight }) => {
-  const logoContainerRef = useRef(null);
-  const [logoContainerWidthPx, setLogoContainerWidthPx] = useState(100);
+  const imageElementRef = useRef(null);
+  const [imageLoaded, setImageLoaded] = useState(false);
+
+  const onImageLoaded = () => setImageLoaded(true);
+
+  useEffect(() => {
+    if (imageElementRef.current !== null && imageElementRef !== undefined) {
+      imageElementRef.current.addEventListener("load", onImageLoaded);
+    }
+    return () => {
+      if (imageElementRef.current !== null && imageElementRef !== undefined)
+        imageElementRef.current.removeEventListener("load", onImageLoaded);
+    };
+  }, [imageElementRef]);
 
   return (
     <>
       <PageContainer>
         <ContentContainer style={{ height: "100vh" }}>
           <ImageComponent
+            onLoad={onImageLoaded}
+            ref={imageElementRef}
             src="imgs/bg03.jpg"
             alt="portfolio page img"
             screenWidth={screenWidth}
             screenHeight={screenHeight}
           />
-          <motion.div
-            variants={bgAnimation}
-            initial="initial"
-            animate="animate"
-            exit="exit"
-            transition={{ duration: "0.32", delay: "0" }}
-          >
+
+          {imageLoaded ? (
+            <motion.div
+              variants={bgAnimation}
+              initial="initial"
+              animate="animate"
+              exit="exit"
+              transition={{ duration: "0.25", delay: "0" }}
+            >
+              <ImageCover />
+            </motion.div>
+          ) : (
             <ImageCover />
-          </motion.div>
+          )}
 
           <ContentWrapper
             screenWidth={screenWidth}
@@ -142,7 +161,7 @@ const PortfolioPage = ({ screenWidth, screenHeight }) => {
                 initial="initial"
                 animate="animate"
                 exit="exit"
-                transition={{ ...springTrainsition, delay: "0.2" }}
+                transition={{ ...springTrainsition, delay: "0.3" }}
               >
                 <LogoComponent
                   src="logos/Logo_coindcx.png"
@@ -158,7 +177,7 @@ const PortfolioPage = ({ screenWidth, screenHeight }) => {
                 initial="initial"
                 animate="animate"
                 exit="exit"
-                transition={{ ...springTrainsition, delay: "0.2" }}
+                transition={{ ...springTrainsition, delay: "0.4" }}
               >
                 <LogoComponent
                   src="logos/Logo_ftx.png"
@@ -174,7 +193,7 @@ const PortfolioPage = ({ screenWidth, screenHeight }) => {
                 initial="initial"
                 animate="animate"
                 exit="exit"
-                transition={{ ...springTrainsition, delay: "0.2" }}
+                transition={{ ...springTrainsition, delay: "0.5" }}
               >
                 <LogoComponent
                   src="logos/Logo_cardio.png"
