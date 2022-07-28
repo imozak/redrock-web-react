@@ -1,14 +1,7 @@
 import styled from "@emotion/styled";
 import React, { useState, forwardRef, useEffect } from "react";
-import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import Footer from "./Footer";
-
-const fadeInAnimation = {
-  initial: { opacity: 0 },
-  animate: { opacity: 1 },
-  exit: { opacity: 0 },
-};
 
 const textFromRightAnimation = {
   initial: { opacity: 0, x: 150 },
@@ -28,12 +21,18 @@ const bgAnimation = {
   exit: { opacity: 1 },
 };
 
+const springTrainsition = {
+  type: "spring",
+  stiffness: 150,
+  damping: 15,
+};
+
 const HomePage = ({ screenWidth, screenHeight }) => (
   <>
     <PageContainer>
       <ContentContainer style={{ height: "95vh" }}>
         <ImageComponent
-          src="imgs/RedRockImg01.jpg"
+          src="imgs/bg01.jpg"
           alt="main page img"
           screenWidth={screenWidth}
           screenHeight={screenHeight}
@@ -57,7 +56,7 @@ const HomePage = ({ screenWidth, screenHeight }) => (
             initial="initial"
             animate="animate"
             exit="exit"
-            transition={{ duration: "0.25", delay: "0.1" }}
+            transition={{ ...springTrainsition, delay: "0.1" }}
           >
             <p
               style={{
@@ -75,13 +74,13 @@ const HomePage = ({ screenWidth, screenHeight }) => (
             initial="initial"
             animate="animate"
             exit="exit"
-            transition={{ duration: "0.25", delay: "0.15" }}
+            transition={{ ...springTrainsition, delay: "0.2" }}
           >
             <p
               style={{
                 fontSize: "1.1rem",
                 fontWeight: "300",
-                color: "#E2E2E2",
+                color: "#F0F0F0",
                 lineHeight: "2rem",
                 letterSpacing: "0.05rem",
               }}
@@ -90,36 +89,6 @@ const HomePage = ({ screenWidth, screenHeight }) => (
               eiusmod tempor incididunt
             </p>
           </motion.div>
-        </ContentWrapper>
-      </ContentContainer>
-
-      <ContentContainer
-        style={{
-          height: "auto",
-          padding: " 6rem 0rem",
-          // backgroundColor: "#F2F2F2",
-        }}
-      >
-        <ContentWrapper screenWidth={screenWidth} screenHeight={screenHeight}>
-          <p
-            style={{
-              fontSize: "1.25rem",
-              fontWeight: "600",
-              letterSpacing: "0.2rem",
-              color: "#E2E2E2",
-              // color: "#2F2F2F",
-            }}
-          >
-            PORTFOLIOS
-          </p>
-          <PortfolioContainer>
-            <PortfolioLogoBox />
-            <PortfolioLogoBox />
-            <PortfolioLogoBox />
-            <PortfolioLogoBox />
-            <PortfolioLogoBox />
-            <PortfolioLogoBox />
-          </PortfolioContainer>
         </ContentWrapper>
       </ContentContainer>
 

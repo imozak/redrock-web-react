@@ -39,7 +39,7 @@ const Navigation = ({ screenWidth, screenHeight }) => {
               <SegmentIcon
                 fontSize="large"
                 sx={{
-                  color: "#cdcdcd",
+                  color: "#F0F0F0",
                 }}
               />
             </IconButton>
@@ -94,11 +94,11 @@ const Navigation = ({ screenWidth, screenHeight }) => {
 
             <Link
               style={{ width: "100%", height: "7rem" }}
-              to="/portfolios"
+              to="/portfolio"
               onClick={closeExpandableMenu}
             >
               <MenuTextContainer>
-                <MenuTextItem>PORTFOLIOS</MenuTextItem>
+                <MenuTextItem>PORTFOLIO</MenuTextItem>
               </MenuTextContainer>
             </Link>
 

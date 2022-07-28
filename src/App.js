@@ -13,7 +13,7 @@ import { AnimatePresence } from "framer-motion";
 import GlobalStyle from "./globals/GlobalStyle";
 import Navigation from "./components/Navigation";
 import HomePage from "./components/HomePage";
-import PortfoliosPage from "./components/PortfoliosPage";
+import PortfolioPage from "./components/PortfolioPage";
 import TeamPage from "./components/TeamPage";
 import Footer from "./components/Footer";
 import PartnersPage from "./components/PartnersPage";
@@ -73,9 +73,9 @@ const App = () => {
               }
             />
             <Route
-              path="/portfolios"
+              path="/portfolio"
               element={
-                <PortfoliosPage
+                <PortfolioPage
                   screenWidth={screenWidth}
                   screenHeight={screenHeight}
                 />

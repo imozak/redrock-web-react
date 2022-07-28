@@ -1,5 +1,5 @@
 import styled from "@emotion/styled";
-import React, { useState, forwardRef } from "react";
+import React, { useState, useRef } from "react";
 import { motion } from "framer-motion";
 import { Divider } from "@mui/material";
 import Footer from "./Footer";
@@ -40,15 +40,17 @@ const springTrainsition = {
   damping: 15,
 };
 
-const PartnersPage = ({ screenWidth, screenHeight }) => {
-  const a = 1;
+const PortfolioPage = ({ screenWidth, screenHeight }) => {
+  const logoContainerRef = useRef(null);
+  const [logoContainerWidthPx, setLogoContainerWidthPx] = useState(100);
+
   return (
     <>
       <PageContainer>
         <ContentContainer style={{ height: "100vh" }}>
           <ImageComponent
-            src="imgs/bg02.jpg"
-            alt="partners page img"
+            src="imgs/bg03.jpg"
+            alt="portfolio page img"
             screenWidth={screenWidth}
             screenHeight={screenHeight}
           />
@@ -83,7 +85,7 @@ const PartnersPage = ({ screenWidth, screenHeight }) => {
                   lineHeight: "0rem",
                 }}
               >
-                PARTNERS
+                PORTFOLIO
               </p>
               <motion.div
                 variants={widthExtendAnimation}
@@ -94,7 +96,7 @@ const PartnersPage = ({ screenWidth, screenHeight }) => {
               >
                 <Divider
                   sx={{
-                    width: screenWidth > screenHeight ? "50%" : "100%",
+                    width: screenWidth > screenHeight ? "95%" : "100%",
                     borderColor: "#C2C2C2",
                     mt: 0,
                     mb: 5,
@@ -112,7 +114,7 @@ const PartnersPage = ({ screenWidth, screenHeight }) => {
                 transition={{ ...springTrainsition, delay: "0.1" }}
               >
                 <LogoComponent
-                  src="logos/Logo_thevault.png"
+                  src="logos/Logo_codedao.png"
                   alt="logo image"
                   screenWidth={screenWidth}
                   screenHeight={screenHeight}
@@ -126,7 +128,52 @@ const PartnersPage = ({ screenWidth, screenHeight }) => {
                 transition={{ ...springTrainsition, delay: "0.2" }}
               >
                 <LogoComponent
-                  src="logos/Logo_cadenza.png"
+                  src="logos/Logo_falconx.png"
+                  alt="logo image"
+                  screenWidth={screenWidth}
+                  screenHeight={screenHeight}
+                />
+              </motion.div>
+
+              <motion.div
+                variants={fromDownAnimation}
+                initial="initial"
+                animate="animate"
+                exit="exit"
+                transition={{ ...springTrainsition, delay: "0.2" }}
+              >
+                <LogoComponent
+                  src="logos/Logo_coindcx.png"
+                  alt="logo image"
+                  screenWidth={screenWidth}
+                  screenHeight={screenHeight}
+                />
+              </motion.div>
+
+              <motion.div
+                variants={fromDownAnimation}
+                initial="initial"
+                animate="animate"
+                exit="exit"
+                transition={{ ...springTrainsition, delay: "0.2" }}
+              >
+                <LogoComponent
+                  src="logos/Logo_ftx.png"
+                  alt="logo image"
+                  screenWidth={screenWidth}
+                  screenHeight={screenHeight}
+                />
+              </motion.div>
+
+              <motion.div
+                variants={fromDownAnimation}
+                initial="initial"
+                animate="animate"
+                exit="exit"
+                transition={{ ...springTrainsition, delay: "0.2" }}
+              >
+                <LogoComponent
+                  src="logos/Logo_cardio.png"
                   alt="logo image"
                   screenWidth={screenWidth}
                   screenHeight={screenHeight}
@@ -219,8 +266,8 @@ const LogoContainer = styled.div`
 
 const LogoComponent = styled.img`
   height: ${(props) =>
-    props.screenWidth > props.screenHeight ? "6vmax" : "12vmin"};
+    props.screenWidth > props.screenHeight ? "3vmax" : "9vmin"};
   opacity: 0.9;
 `;
 
-export default PartnersPage;
+export default PortfolioPage;
