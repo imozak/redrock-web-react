@@ -260,6 +260,8 @@ const LogoText = styled.p`
   color: #bfbfbf;
   text-align: center;
   line-height: 0;
+
+  display: none;
 `;
 
 export default PartnersPage;

@@ -133,7 +133,7 @@ const PortfolioPage = ({ screenWidth, screenHeight }) => {
                 transition={{ ...springTrainsition, delay: "0.1" }}
               >
                 <LogoComponent
-                  src="logos/Logo_codedao.png"
+                  src="logos/Logo_codedao_allwhite.png"
                   alt="logo image"
                   screenWidth={screenWidth}
                   screenHeight={screenHeight}
@@ -164,7 +164,7 @@ const PortfolioPage = ({ screenWidth, screenHeight }) => {
                 transition={{ ...springTrainsition, delay: "0.3" }}
               >
                 <LogoComponent
-                  src="logos/Logo_coindcx.png"
+                  src="logos/Logo_coindcx_allwhite.png"
                   alt="logo image"
                   screenWidth={screenWidth}
                   screenHeight={screenHeight}
@@ -180,7 +180,7 @@ const PortfolioPage = ({ screenWidth, screenHeight }) => {
                 transition={{ ...springTrainsition, delay: "0.4" }}
               >
                 <LogoComponent
-                  src="logos/Logo_ftx.png"
+                  src="logos/Logo_ftx_allwhite.png"
                   alt="logo image"
                   screenWidth={screenWidth}
                   screenHeight={screenHeight}
@@ -308,6 +308,8 @@ const LogoText = styled.p`
   color: #bfbfbf;
   text-align: center;
   line-height: 0;
+
+  display: none;
 `;
 
 export default PortfolioPage;
