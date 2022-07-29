@@ -15,12 +15,6 @@ const textFromLeftAnimation = {
   exit: { opacity: 0, x: 150 },
 };
 
-const bgAnimation = {
-  initial: { opacity: 1 },
-  animate: { opacity: 0 },
-  exit: { opacity: 1 },
-};
-
 const springTrainsition = {
   type: "spring",
   stiffness: 150,
@@ -58,11 +52,18 @@ const HomePage = ({ screenWidth, screenHeight }) => {
 
           {imageLoaded ? (
             <motion.div
-              variants={bgAnimation}
-              initial="initial"
-              animate="animate"
-              exit="exit"
-              transition={{ duration: "0.25", delay: "0" }}
+              initial={{
+                opacity: 1,
+                transition: { duration: "0.25", delay: "0" },
+              }}
+              animate={{
+                opacity: 0,
+                transition: { duration: "0.25", delay: "0" },
+              }}
+              exit={{
+                opacity: 1,
+                transition: { duration: "0.1", delay: "0" },
+              }}
             >
               <ImageCover />
             </motion.div>
@@ -76,11 +77,21 @@ const HomePage = ({ screenWidth, screenHeight }) => {
             style={{ marginTop: "-10vh", zIndex: "3" }}
           >
             <motion.div
-              variants={textFromRightAnimation}
-              initial="initial"
-              animate="animate"
-              exit="exit"
-              transition={{ ...springTrainsition, delay: "0.1" }}
+              initial={{
+                opacity: 0,
+                x: 150,
+                transition: { ...springTrainsition, delay: "0.1" },
+              }}
+              animate={{ opacity: 1, x: 0 }}
+              exit={{
+                opacity: 0,
+                x: -100,
+                transition: {
+                  type: "linear",
+                  duration: 0.1,
+                  delay: 0,
+                },
+              }}
             >
               <p
                 style={{
@@ -94,11 +105,21 @@ const HomePage = ({ screenWidth, screenHeight }) => {
               </p>
             </motion.div>
             <motion.div
-              variants={textFromLeftAnimation}
-              initial="initial"
-              animate="animate"
-              exit="exit"
-              transition={{ ...springTrainsition, delay: "0.2" }}
+              initial={{
+                opacity: 0,
+                x: -150,
+                transition: { ...springTrainsition, delay: "0.2" },
+              }}
+              animate={{ opacity: 1, x: 0 }}
+              exit={{
+                opacity: 0,
+                x: 100,
+                transition: {
+                  type: "linear",
+                  duration: 0.1,
+                  delay: 0,
+                },
+              }}
             >
               <p
                 style={{

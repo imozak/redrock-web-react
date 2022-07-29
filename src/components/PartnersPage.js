@@ -4,40 +4,64 @@ import { motion } from "framer-motion";
 import { Divider } from "@mui/material";
 import Footer from "./Footer";
 
-const fromRightAnimation = {
-  initial: { opacity: 0, x: 150 },
-  animate: { opacity: 1, x: 0 },
-  exit: { opacity: 0, x: 150 },
-};
-
-const bgAnimation = {
-  initial: { opacity: 1 },
-  animate: { opacity: 0 },
-  exit: { opacity: 1 },
-};
-
-const fromLeftAnimation = {
-  initial: { opacity: 0, x: -100 },
-  animate: { opacity: 1, x: 0 },
-  exit: { opacity: 0, x: -150 },
-};
-
-const fromDownAnimation = {
-  initial: { opacity: 0, y: 100 },
-  animate: { opacity: 1, y: 0 },
-  exit: { opacity: 0, y: 100 },
-};
-
-const widthExtendAnimation = {
-  initial: { width: "0%" },
-  animate: { width: "100%" },
-  exit: { width: "0%" },
-};
-
 const springTrainsition = {
   type: "spring",
   stiffness: 150,
   damping: 15,
+};
+
+const fromDownAnimation = {
+  initial: {
+    opacity: 0,
+    y: 100,
+    transition: { ...springTrainsition, delay: "0.2" },
+  },
+  animate: { opacity: 1, y: 0 },
+  exit: {
+    opacity: 0,
+    y: 100,
+    transition: {
+      type: "linear",
+      duration: 0.1,
+      delay: 0,
+    },
+  },
+};
+
+const fromLeftAnimation = {
+  initial: {
+    opacity: 0,
+    x: -100,
+    transition: { ...springTrainsition, delay: "0.2" },
+  },
+  animate: { opacity: 1, x: 0 },
+  exit: {
+    opacity: 0,
+    x: 100,
+    transition: {
+      type: "linear",
+      duration: 0.1,
+      delay: 0,
+    },
+  },
+};
+
+const widthExtendAnimation = {
+  initial: {
+    width: "0%",
+    transition: { ...springTrainsition, delay: "0.2" },
+  },
+  animate: {
+    width: "100%",
+  },
+  exit: {
+    width: "0%",
+    transition: {
+      type: "linear",
+      duration: 0.1,
+      delay: 0,
+    },
+  },
 };
 
 const PartnersPage = ({ screenWidth, screenHeight }) => {
@@ -71,11 +95,18 @@ const PartnersPage = ({ screenWidth, screenHeight }) => {
 
           {imageLoaded ? (
             <motion.div
-              variants={bgAnimation}
-              initial="initial"
-              animate="animate"
-              exit="exit"
-              transition={{ duration: "0.25", delay: "0" }}
+              initial={{
+                opacity: 1,
+                transition: { duration: "0.25", delay: "0" },
+              }}
+              animate={{
+                opacity: 0,
+                transition: { duration: "0.25", delay: "0" },
+              }}
+              exit={{
+                opacity: 1,
+                transition: { duration: "0.1", delay: "0" },
+              }}
             >
               <ImageCover />
             </motion.div>
@@ -93,7 +124,6 @@ const PartnersPage = ({ screenWidth, screenHeight }) => {
               initial="initial"
               animate="animate"
               exit="exit"
-              transition={{ ...springTrainsition, delay: "0.05" }}
             >
               <p
                 style={{
@@ -111,7 +141,7 @@ const PartnersPage = ({ screenWidth, screenHeight }) => {
                 initial="initial"
                 animate="animate"
                 exit="exit"
-                transition={{ ...springTrainsition, delay: "0.3" }}
+                transition={{ ...springTrainsition, delay: "0.2" }}
               >
                 <Divider
                   sx={{
