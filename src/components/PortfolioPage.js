@@ -238,6 +238,22 @@ const PortfolioPage = ({ screenWidth, screenHeight }) => {
                 />
                 <LogoText>CARDIO HEALTH</LogoText>
               </LogoMotionDiv>
+
+              <LogoMotionDiv
+                variants={fromDownAnimation}
+                initial="initial"
+                animate="animate"
+                exit="exit"
+                transition={{ ...springTrainsition, delay: "0.6" }}
+              >
+                <LogoComponent
+                  src="logos/logo_blockfi_allwhite.png"
+                  alt="logo image"
+                  screenWidth={screenWidth}
+                  screenHeight={screenHeight}
+                />
+                <LogoText>Blockfi</LogoText>
+              </LogoMotionDiv>
             </LogoContainer>
           </ContentWrapper>
         </ContentContainer>
@@ -331,7 +347,7 @@ const LogoMotionDiv = styled(motion.div)`
 
 const LogoComponent = styled.img`
   height: ${(props) =>
-    props.screenWidth > props.screenHeight ? "3vmax" : "9vmin"};
+    props.screenWidth > props.screenHeight ? "4.1vmax" : "9vmin"};
   opacity: 0.9;
 `;
 
