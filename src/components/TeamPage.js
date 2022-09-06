@@ -185,7 +185,8 @@ const TeamPage = ({ screenWidth, screenHeight }) => {
                 <NameText>Peter Kim</NameText>
                 <PositionText>CSO | Co-founder</PositionText>
                 <a
-                  href="https://www.linkedin.com/in/gkim"
+                  style={{ pointerEvents: "none" }}
+                  href="https://www.linkedin.com/"
                   target="_blank"
                   rel="noopener noreferrer"
                 >

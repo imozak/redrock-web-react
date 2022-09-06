@@ -134,11 +134,11 @@ const HomePage = ({ screenWidth, screenHeight }) => {
                   whiteSpace: "pre-wrap",
                 }}
               >
-                “Good is the enemy of great. And that is one of the key reasons.
+                “Good is the enemy of great. And that is one of the key reasons
                 why we have so little that becomes great. We don&apos;t have
                 great schools, principally because we have good schools. We
                 don&apos;t have great government, principally because we have
-                good government.Few people attain great lives, in large part
+                good government. Few people attain great lives, in large part
                 because it is just so easy to settle for a good life.”
               </p>
             </motion.div>
