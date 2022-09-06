@@ -95,13 +95,15 @@ const HomePage = ({ screenWidth, screenHeight }) => {
             >
               <p
                 style={{
-                  fontSize: "3rem",
+                  fontSize: "min(3.5rem, 11vw)",
                   fontWeight: "700",
-                  letterSpacing: "0.2rem",
+                  letterSpacing: "0.0rem",
                   color: "#E2E2E2",
+                  whiteSpace: "pre-wrap",
+                  margin: "0",
                 }}
               >
-                PROMOT123 TEXT
+                {"We Help Good Startups\nBuild Great Companies"}
               </p>
             </motion.div>
             <motion.div
@@ -123,15 +125,53 @@ const HomePage = ({ screenWidth, screenHeight }) => {
             >
               <p
                 style={{
-                  fontSize: "1.1rem",
+                  width: "min(53rem, 90vw)",
+                  fontSize: "1.04rem",
                   fontWeight: "300",
                   color: "#F0F0F0",
-                  lineHeight: "2rem",
+                  lineHeight: "1.85rem",
                   letterSpacing: "0.05rem",
+                  whiteSpace: "pre-wrap",
                 }}
               >
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-                eiusmod tempor incididunt
+                “Good is the enemy of great. And that is one of the key reasons.
+                why we have so little that becomes great. We don&apos;t have
+                great schools, principally because we have good schools. We
+                don&apos;t have great government, principally because we have
+                good government.Few people attain great lives, in large part
+                because it is just so easy to settle for a good life.”
+              </p>
+            </motion.div>
+
+            <motion.div
+              initial={{
+                opacity: 0,
+                x: -150,
+                transition: { ...springTrainsition, delay: "2" },
+              }}
+              animate={{ opacity: 1, x: 0 }}
+              exit={{
+                opacity: 0,
+                x: 100,
+                transition: {
+                  type: "linear",
+                  duration: 0.1,
+                  delay: 0,
+                },
+              }}
+            >
+              <p
+                style={{
+                  width: "56rem",
+                  fontSize: "1rem",
+                  fontWeight: "500",
+                  color: "#F0F0F0",
+                  lineHeight: "1rem",
+                  letterSpacing: "0.05rem",
+                  whiteSpace: "pre-wrap",
+                }}
+              >
+                - Jim Collins -
               </p>
             </motion.div>
           </ContentWrapper>
@@ -146,7 +186,7 @@ const HomePage = ({ screenWidth, screenHeight }) => {
 const PageContainer = styled.div`
   position: relative;
   width: 100%;
-  margin-top: 5vh;
+  margin-top: 7vh;
   background-color: #231f1e;
 
   display: flex;
