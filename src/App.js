@@ -17,6 +17,7 @@ import PortfolioPage from "./components/PortfolioPage";
 import TeamPage from "./components/TeamPage";
 import Footer from "./components/Footer";
 import PartnersPage from "./components/PartnersPage";
+import AboutUsPage from "./components/AboutUsPage";
 
 const App = () => {
   const [screenWidth, setScreenWidth] = useState(0);
@@ -76,6 +77,15 @@ const App = () => {
               path="/portfolio"
               element={
                 <PortfolioPage
+                  screenWidth={screenWidth}
+                  screenHeight={screenHeight}
+                />
+              }
+            />
+            <Route
+              path="/aboutus"
+              element={
+                <AboutUsPage
                   screenWidth={screenWidth}
                   screenHeight={screenHeight}
                 />

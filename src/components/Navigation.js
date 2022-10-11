@@ -102,6 +102,16 @@ const Navigation = ({ screenWidth, screenHeight }) => {
               </MenuTextContainer>
             </Link>
 
+            <Link
+              style={{ width: "100%", height: "7rem" }}
+              to="/aboutus"
+              onClick={closeExpandableMenu}
+            >
+              <MenuTextContainer>
+                <MenuTextItem>ABOUT US</MenuTextItem>
+              </MenuTextContainer>
+            </Link>
+
             <ContactComponent />
           </ModalMenuContainer>
         </Fade>
