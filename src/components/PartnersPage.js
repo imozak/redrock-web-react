@@ -185,6 +185,21 @@ const PartnersPage = ({ screenWidth, screenHeight }) => {
                 />
                 <LogoText>CADENZA</LogoText>
               </LogoMotionDiv>
+              <LogoMotionDiv
+                variants={fromDownAnimation}
+                initial="initial"
+                animate="animate"
+                exit="exit"
+                transition={{ ...springTrainsition, delay: "0.2" }}
+              >
+                <LogoComponent
+                  src="logos/Logo_burrito.png"
+                  alt="logo image"
+                  screenWidth={screenWidth}
+                  screenHeight={screenHeight}
+                />
+                <LogoText>CADENZA</LogoText>
+              </LogoMotionDiv>
             </LogoContainer>
           </ContentWrapper>
         </ContentContainer>
