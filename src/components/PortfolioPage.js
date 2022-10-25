@@ -254,6 +254,22 @@ const PortfolioPage = ({ screenWidth, screenHeight }) => {
                 />
                 <LogoText>Blockfi</LogoText>
               </LogoMotionDiv>
+
+              <LogoMotionDiv
+                variants={fromDownAnimation}
+                initial="initial"
+                animate="animate"
+                exit="exit"
+                transition={{ ...springTrainsition, delay: "0.2" }}
+              >
+                <LogoComponent
+                  src="logos/Logo_burrito.png"
+                  alt="logo image"
+                  screenWidth={screenWidth}
+                  screenHeight={screenHeight}
+                />
+                <LogoText>Burrito</LogoText>
+              </LogoMotionDiv>
             </LogoContainer>
           </ContentWrapper>
         </ContentContainer>
