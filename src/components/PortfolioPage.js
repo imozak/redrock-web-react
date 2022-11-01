@@ -159,13 +159,18 @@ const PortfolioPage = ({ screenWidth, screenHeight }) => {
                 />
               </motion.div>
             </motion.div>
-            <LogoContainer>
+            <LogoContainer
+              screenWidth={screenWidth}
+              screenHeight={screenHeight}
+            >
               <LogoMotionDiv
                 variants={fromDownAnimation}
                 initial="initial"
                 animate="animate"
                 exit="exit"
                 transition={{ ...springTrainsition, delay: "0.1" }}
+                screenWidth={screenWidth}
+                screenHeight={screenHeight}
               >
                 <LogoComponent
                   src="logos/logo_codedao_allwhite.png"
@@ -181,6 +186,8 @@ const PortfolioPage = ({ screenWidth, screenHeight }) => {
                 animate="animate"
                 exit="exit"
                 transition={{ ...springTrainsition, delay: "0.2" }}
+                screenWidth={screenWidth}
+                screenHeight={screenHeight}
               >
                 <LogoComponent
                   src="logos/Logo_falconx.png"
@@ -197,6 +204,8 @@ const PortfolioPage = ({ screenWidth, screenHeight }) => {
                 animate="animate"
                 exit="exit"
                 transition={{ ...springTrainsition, delay: "0.3" }}
+                screenWidth={screenWidth}
+                screenHeight={screenHeight}
               >
                 <LogoComponent
                   src="logos/logo_coindcx_allwhite.png"
@@ -213,6 +222,8 @@ const PortfolioPage = ({ screenWidth, screenHeight }) => {
                 animate="animate"
                 exit="exit"
                 transition={{ ...springTrainsition, delay: "0.4" }}
+                screenWidth={screenWidth}
+                screenHeight={screenHeight}
               >
                 <LogoComponent
                   src="logos/logo_ftx_allwhite.png"
@@ -229,6 +240,8 @@ const PortfolioPage = ({ screenWidth, screenHeight }) => {
                 animate="animate"
                 exit="exit"
                 transition={{ ...springTrainsition, delay: "0.5" }}
+                screenWidth={screenWidth}
+                screenHeight={screenHeight}
               >
                 <LogoComponent
                   src="logos/Logo_cardiohealth.png"
@@ -245,6 +258,8 @@ const PortfolioPage = ({ screenWidth, screenHeight }) => {
                 animate="animate"
                 exit="exit"
                 transition={{ ...springTrainsition, delay: "0.6" }}
+                screenWidth={screenWidth}
+                screenHeight={screenHeight}
               >
                 <LogoComponent
                   src="logos/logo_blockfi_allwhite.png"
@@ -261,6 +276,8 @@ const PortfolioPage = ({ screenWidth, screenHeight }) => {
                 animate="animate"
                 exit="exit"
                 transition={{ ...springTrainsition, delay: "0.2" }}
+                screenWidth={screenWidth}
+                screenHeight={screenHeight}
               >
                 <LogoComponent
                   src="logos/Logo_burrito.png"
@@ -348,11 +365,21 @@ const ImageComponent = styled.img`
 
 const LogoContainer = styled.div`
   width: 100%;
+  /*
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
   column-gap: 4rem;
   row-gap: 2rem;
+  */
+
+  display: grid;
+
+  grid-template-columns: ${(props) =>
+    props.screenWidth > props.screenHeight ? "22% 22% 22% 22%" : "45% 45%"};
+
+  gap: ${(props) =>
+    props.screenWidth > props.screenHeight ? "2rem 3%" : "1.2rem"};
 `;
 
 const LogoMotionDiv = styled(motion.div)`
@@ -362,8 +389,8 @@ const LogoMotionDiv = styled(motion.div)`
 `;
 
 const LogoComponent = styled.img`
-  height: ${(props) =>
-    props.screenWidth > props.screenHeight ? "4.1vmax" : "9vmin"};
+  object-fit: cover;
+  width: 100%;
   opacity: 0.9;
 `;
 
