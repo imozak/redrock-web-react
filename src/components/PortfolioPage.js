@@ -287,6 +287,24 @@ const PortfolioPage = ({ screenWidth, screenHeight }) => {
                 />
                 <LogoText>Burrito</LogoText>
               </LogoMotionDiv>
+
+              <LogoMotionDiv
+                variants={fromDownAnimation}
+                initial="initial"
+                animate="animate"
+                exit="exit"
+                transition={{ ...springTrainsition, delay: "0.2" }}
+                screenWidth={screenWidth}
+                screenHeight={screenHeight}
+              >
+                <LogoComponent
+                  src="logos/Logo_forthedog.png"
+                  alt="logo image"
+                  screenWidth={screenWidth}
+                  screenHeight={screenHeight}
+                />
+                <LogoText>For The Dog</LogoText>
+              </LogoMotionDiv>
             </LogoContainer>
           </ContentWrapper>
         </ContentContainer>
