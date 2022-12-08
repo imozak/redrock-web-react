@@ -226,7 +226,7 @@ const PortfolioPage = ({ screenWidth, screenHeight }) => {
                 screenHeight={screenHeight}
               >
                 <LogoComponent
-                  src="logos/logo_blockfolio.png"
+                  src="logos/Logo_blockfolio.png"
                   alt="logo image"
                   screenWidth={screenWidth}
                   screenHeight={screenHeight}
