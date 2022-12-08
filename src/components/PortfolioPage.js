@@ -226,12 +226,12 @@ const PortfolioPage = ({ screenWidth, screenHeight }) => {
                 screenHeight={screenHeight}
               >
                 <LogoComponent
-                  src="logos/logo_ftx_allwhite.png"
+                  src="logos/logo_blockfolio.png"
                   alt="logo image"
                   screenWidth={screenWidth}
                   screenHeight={screenHeight}
                 />
-                <LogoText>FTX</LogoText>
+                <LogoText>BlockFolio</LogoText>
               </LogoMotionDiv>
 
               <LogoMotionDiv
