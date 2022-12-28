@@ -154,7 +154,10 @@ const PartnersPage = ({ screenWidth, screenHeight }) => {
                 />
               </motion.div>
             </motion.div>
-            <LogoContainer>
+            <LogoContainer
+              screenWidth={screenWidth}
+              screenHeight={screenHeight}
+            >
               <LogoMotionDiv
                 variants={fromDownAnimation}
                 initial="initial"
@@ -184,6 +187,21 @@ const PartnersPage = ({ screenWidth, screenHeight }) => {
                   screenHeight={screenHeight}
                 />
                 <LogoText>CADENZA</LogoText>
+              </LogoMotionDiv>
+              <LogoMotionDiv
+                variants={fromDownAnimation}
+                initial="initial"
+                animate="animate"
+                exit="exit"
+                transition={{ ...springTrainsition, delay: "0.2" }}
+              >
+                <LogoComponent
+                  src="logos/Logo_PhilosophiaVentures.png"
+                  alt="logo image"
+                  screenWidth={screenWidth}
+                  screenHeight={screenHeight}
+                />
+                <LogoText>Philosophia Ventures</LogoText>
               </LogoMotionDiv>
             </LogoContainer>
           </ContentWrapper>
@@ -263,11 +281,13 @@ const ImageComponent = styled.img`
 
 const LogoContainer = styled.div`
   width: 100%;
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  column-gap: 4rem;
-  row-gap: 2rem;
+  display: grid;
+
+  grid-template-columns: ${(props) =>
+    props.screenWidth > props.screenHeight ? "22% 22% 22% 22%" : "45% 45%"};
+
+  gap: ${(props) =>
+    props.screenWidth > props.screenHeight ? "2rem 3%" : "1.2rem"};
 `;
 
 const LogoMotionDiv = styled(motion.div)`
@@ -277,8 +297,8 @@ const LogoMotionDiv = styled(motion.div)`
 `;
 
 const LogoComponent = styled.img`
-  height: ${(props) =>
-    props.screenWidth > props.screenHeight ? "6vmax" : "12vmin"};
+  object-fit: cover;
+  width: 100%;
   opacity: 0.9;
 `;
 

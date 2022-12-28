@@ -383,13 +383,6 @@ const ImageComponent = styled.img`
 
 const LogoContainer = styled.div`
   width: 100%;
-  /*
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  column-gap: 4rem;
-  row-gap: 2rem;
-  */
 
   display: grid;
 
