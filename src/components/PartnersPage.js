@@ -166,7 +166,7 @@ const PartnersPage = ({ screenWidth, screenHeight }) => {
                 transition={{ ...springTrainsition, delay: "0.1" }}
               >
                 <LogoComponent
-                  src="logos/logo_thevault.png"
+                  src="logos/logo-thevault.png"
                   alt="logo image"
                   screenWidth={screenWidth}
                   screenHeight={screenHeight}
@@ -181,7 +181,7 @@ const PartnersPage = ({ screenWidth, screenHeight }) => {
                 transition={{ ...springTrainsition, delay: "0.2" }}
               >
                 <LogoComponent
-                  src="logos/logo_cadenza.png"
+                  src="logos/logo-cadenza.png"
                   alt="logo image"
                   screenWidth={screenWidth}
                   screenHeight={screenHeight}
@@ -196,7 +196,7 @@ const PartnersPage = ({ screenWidth, screenHeight }) => {
                 transition={{ ...springTrainsition, delay: "0.2" }}
               >
                 <LogoComponent
-                  src="logos/logo_PhilosophiaVentures.png"
+                  src="logos/logo-PhilosophiaVentures.png"
                   alt="logo image"
                   screenWidth={screenWidth}
                   screenHeight={screenHeight}

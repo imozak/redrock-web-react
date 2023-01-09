@@ -173,7 +173,7 @@ const PortfolioPage = ({ screenWidth, screenHeight }) => {
                 screenHeight={screenHeight}
               >
                 <LogoComponent
-                  src="logos/logo_codedao.png"
+                  src="logos/logo-codedao.png"
                   alt="logo image"
                   screenWidth={screenWidth}
                   screenHeight={screenHeight}
@@ -190,7 +190,7 @@ const PortfolioPage = ({ screenWidth, screenHeight }) => {
                 screenHeight={screenHeight}
               >
                 <LogoComponent
-                  src="logos/logo_falconx.png"
+                  src="logos/logo-falconx.png"
                   alt="logo image"
                   screenWidth={screenWidth}
                   screenHeight={screenHeight}
@@ -208,7 +208,7 @@ const PortfolioPage = ({ screenWidth, screenHeight }) => {
                 screenHeight={screenHeight}
               >
                 <LogoComponent
-                  src="logos/logo_coindcx.png"
+                  src="logos/logo-coindcx.png"
                   alt="logo image"
                   screenWidth={screenWidth}
                   screenHeight={screenHeight}
@@ -226,7 +226,7 @@ const PortfolioPage = ({ screenWidth, screenHeight }) => {
                 screenHeight={screenHeight}
               >
                 <LogoComponent
-                  src="logos/logo_blockfolio.png"
+                  src="logos/logo-blockfolio.png"
                   alt="logo image"
                   screenWidth={screenWidth}
                   screenHeight={screenHeight}
@@ -244,7 +244,7 @@ const PortfolioPage = ({ screenWidth, screenHeight }) => {
                 screenHeight={screenHeight}
               >
                 <LogoComponent
-                  src="logos/logo_cardio.png"
+                  src="logos/logo-cardio.png"
                   alt="logo image"
                   screenWidth={screenWidth}
                   screenHeight={screenHeight}
@@ -262,7 +262,7 @@ const PortfolioPage = ({ screenWidth, screenHeight }) => {
                 screenHeight={screenHeight}
               >
                 <LogoComponent
-                  src="logos/logo_blockfi.png"
+                  src="logos/logo-blockfi.png"
                   alt="logo image"
                   screenWidth={screenWidth}
                   screenHeight={screenHeight}
@@ -280,7 +280,7 @@ const PortfolioPage = ({ screenWidth, screenHeight }) => {
                 screenHeight={screenHeight}
               >
                 <LogoComponent
-                  src="logos/logo_burrito.png"
+                  src="logos/logo-burrito.png"
                   alt="logo image"
                   screenWidth={screenWidth}
                   screenHeight={screenHeight}
@@ -298,7 +298,7 @@ const PortfolioPage = ({ screenWidth, screenHeight }) => {
                 screenHeight={screenHeight}
               >
                 <LogoComponent
-                  src="logos/logo_forthedog.png"
+                  src="logos/logo-forthedog.png"
                   alt="logo image"
                   screenWidth={screenWidth}
                   screenHeight={screenHeight}
